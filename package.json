@@ -19,5 +19,8 @@
     "deploy": "npx hardhat run scripts/sample-script.js",
     "deploy:rinkeby": "npx hardhat run scripts/sample-script.js --network rinkeby",
     "deploy:ropsten": "npx hardhat run scripts/sample-script.js --network ropsten"
+  },
+  "dependencies": {
+    "@openzeppelin/contracts": "^4.4.1"
   }
 }
