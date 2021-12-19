@@ -1,0 +1,4 @@
+{
+    "require": "node_modules/hardhat/register",
+    "timeout": 20000
+}
