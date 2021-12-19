@@ -1,5 +1,15 @@
 .vscode
 
+code/node_modules
+code/.env
+code/coverage
+code/coverage.json
+code/typechain
+
+#Hardhat files
+code/cache
+code/artifacts
+
 # Logs
 logs
 *.log
