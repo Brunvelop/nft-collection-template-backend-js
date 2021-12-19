@@ -1,0 +1,13 @@
+version: "3.9"
+
+services:
+  web:
+    image: node:16
+    # environment:
+    #   CHOKIDAR_USEPOLLING: "true" #For react-app
+    volumes:
+      - ./code:/code
+    ports:
+      - 3000:3000
+    tty: true
+    command: tail -f /dev/null #Avoid non exit 0
