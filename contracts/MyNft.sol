@@ -7,8 +7,9 @@ import "@openzeppelin/contracts/access/Ownable.sol";
 import "@openzeppelin/contracts/utils/Counters.sol";
 
 import "contracts/Base64.sol";
+import "contracts/DNA.sol";
 
-contract MyToken is ERC721, ERC721Enumerable, Ownable {
+contract MyToken is ERC721, ERC721Enumerable, Ownable, DNA {
     using Counters for Counters.Counter;
 
     Counters.Counter private _tokenIdCounter;
