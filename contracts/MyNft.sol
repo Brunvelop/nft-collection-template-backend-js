@@ -6,6 +6,8 @@ import "@openzeppelin/contracts/token/ERC721/extensions/ERC721Enumerable.sol";
 import "@openzeppelin/contracts/access/Ownable.sol";
 import "@openzeppelin/contracts/utils/Counters.sol";
 
+import "contracts/Base64.sol";
+
 contract MyToken is ERC721, ERC721Enumerable, Ownable {
     using Counters for Counters.Counter;
 
@@ -23,7 +25,30 @@ contract MyToken is ERC721, ERC721Enumerable, Ownable {
         _safeMint(to, tokenId);
     }
 
-    // The following functions are overrides required by Solidity.
+    function tokenURI(uint256 tokenId) 
+        public
+        view
+        override
+        returns(string memory) 
+    {
+        require(
+            _exists(tokenId),
+            "ERC721 Metadata: URI query for nonexistent token"
+        );
+
+        string memory jsonURI = Base64.encode(
+            abi.encodePacked(
+                '{"name": "MyNFT #', tokenId, '"',
+                '"description": "MyNFT description"',
+                '"image":', "// TODO Calculate image URL",
+                '"}'
+            )
+        );
+
+        return string(abi.encodePacked("data:application/json;base64,",jsonURI));
+    }
+
+    // The following functions are overrides required by Solidity
 
     function _beforeTokenTransfer(address from, address to, uint256 tokenId)
         internal
