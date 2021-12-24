@@ -3,7 +3,7 @@
 pragma solidity ^0.8.2;
 
 contract DNA{
-    
+
     string[] private _accessoriesType = [
         "Blank",
         "Kurt",
@@ -202,7 +202,18 @@ contract DNA{
         "ShortHairTheCaesarSidePart"
     ];
 
-    // TODO: Calculate DNA
+    //TODO: Use chainlink random
+    function deterministicPseudoRandomDNA(uint256 _tokenId, address _minter)
+        public
+        pure
+        returns (uint256)
+    {
+       uint256 combinedParams = _tokenId + uint160(_minter);
+       bytes memory encodedParams = abi.encodePacked(combinedParams);
+       bytes32 hashedParams = keccak256(encodedParams);
+
+       return uint256(hashedParams);
+    }
 
     // Get attributes
     uint8 constant ADN_SECTION_SIZE = 2;
